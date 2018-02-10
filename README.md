@@ -1,4 +1,4 @@
-# widsatx-python
-Women in Data Science ATX presentation on Python - Mar 17, 2015
+# daysofcode-python
+10 Days of Code Tech Talk - Intro to Python - Feb 10, 2018
 
-View the slides at [http://mepa.github.io/widsatx-python/](http://mepa.github.io/widsatx-python/).
+    Slides here: http://mepa.github.io/daysofcode-python/
