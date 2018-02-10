@@ -1,8 +1,64 @@
+
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8" />
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<title>index slides</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="reveal.js/lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -11718,59 +11774,133 @@ ul.typeahead-list > li > a {
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-body {
-  overflow: visible;
-  padding: 8px;
+.reveal {
+  font-size: 160%;
 }
-
-div#notebook {
-  overflow: visible;
-  border-top: none;
-}@media print {
-  div.cell {
-    display: block;
-    page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
-  }
-  div.output { 
-    display: block;
-    page-break-inside: avoid; 
-  }
+.reveal pre {
+  width: inherit;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+.reveal pre code {
+  padding: 0px;
+}
+.reveal section img {
+  border: 0px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+.reveal i {
+  font-style: normal;
+  font-family: FontAwesome;
+  font-size: 2em;
+}
+.reveal .slides {
+  text-align: left;
+}
+.reveal.fade {
+  opacity: 1;
+}
+.reveal .progress {
+  position: static;
+}
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+  border-right-color: #727272;
+}
+.reveal .controls .navigate-left.enabled:hover,
+.reveal .controls .navigate-left.enabled.enabled:hover {
+  border-right-color: #dfdfdf;
+}
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+  border-left-color: #727272;
+}
+.reveal .controls .navigate-right.enabled:hover,
+.reveal .controls .navigate-right.enabled.enabled:hover {
+  border-left-color: #dfdfdf;
+}
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+  border-bottom-color: #727272;
+}
+.reveal .controls .navigate-up.enabled:hover,
+.reveal .controls .navigate-up.enabled.enabled:hover {
+  border-bottom-color: #dfdfdf;
+}
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+  border-top-color: #727272;
+}
+.reveal .controls .navigate-down.enabled:hover,
+.reveal .controls .navigate-down.enabled.enabled:hover {
+  border-top-color: #dfdfdf;
+}
+.reveal .progress span {
+  background: #727272;
+}
+div.input_area {
+  padding: 0.06em;
+}
+div.code_cell {
+  background-color: transparent;
+}
+div.prompt {
+  width: 11ex;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  text-align: right;
+}
+div.output_area pre {
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+}
+div.output_prompt {
+  /* 5px right shift to account for margin in parent container */
+  margin: 5px 5px 0 0;
+}
+div.text_cell.rendered .rendered_html {
+  /* The H1 height seems miscalculated, we are just hidding the scrollbar */
+  overflow-y: hidden;
+}
+a.anchor-link {
+  /* There is still an anchor, we are only hidding it */
+  display: none;
+}
+.rendered_html p {
+  text-align: inherit;
+}
+::-webkit-scrollbar
+{
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar *
+{
+  background:transparent;
+}
+::-webkit-scrollbar-thumb
+{
+  background: #727272 !important;
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-<!-- Loading mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration --></head>
-<body>
-  <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
+</head>
 
+
+<body>
+
+
+<div class="reveal">
+<div class="slides">
+<section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11788,7 +11918,7 @@ February 10, 2018
 </div>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11800,7 +11930,7 @@ February 10, 2018
 
 </div>
 </div>
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11828,7 +11958,7 @@ February 10, 2018
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11851,7 +11981,7 @@ February 10, 2018
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11863,7 +11993,7 @@ February 10, 2018
 
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11875,7 +12005,7 @@ February 10, 2018
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11889,7 +12019,7 @@ for( int i = 0; i < 5; i++ )
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
@@ -11926,7 +12056,7 @@ for( int i = 0; i < 5; i++ )
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11945,7 +12075,7 @@ for( int i = 0; i < 5; i++ )
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11959,7 +12089,7 @@ for( int i = 0; i < 5; i++ )
 
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
@@ -12194,7 +12324,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
@@ -12427,7 +12557,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12444,7 +12574,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
@@ -12475,7 +12605,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12487,7 +12617,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
@@ -12521,7 +12651,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12532,7 +12662,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
@@ -12549,7 +12679,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
@@ -12564,7 +12694,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12575,7 +12705,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
@@ -12608,7 +12738,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12619,7 +12749,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
@@ -12651,7 +12781,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
@@ -12666,7 +12796,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12677,7 +12807,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
@@ -12711,7 +12841,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
@@ -12742,7 +12872,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12750,7 +12880,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 <h3 id="Strings">Strings<a class="anchor-link" href="#Strings">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
@@ -12786,7 +12916,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
@@ -12821,7 +12951,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
@@ -12856,7 +12986,7 @@ KPhFRGLM/wHSdGhfAb26ywAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
@@ -12893,7 +13023,7 @@ and this is the third line
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12901,7 +13031,7 @@ and this is the third line
 <h3 id="Exceptions">Exceptions<a class="anchor-link" href="#Exceptions">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[17]:</div>
@@ -12915,7 +13045,7 @@ and this is the third line
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12924,7 +13054,7 @@ and this is the third line
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
@@ -12959,7 +13089,7 @@ and this is the third line
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12973,7 +13103,7 @@ and this is the third line
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
@@ -13010,7 +13140,7 @@ and this is the third line
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
@@ -13051,7 +13181,7 @@ and this is the third line
 </div>
 </div>
 
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
@@ -13093,7 +13223,7 @@ range(0, 10)
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
@@ -13127,7 +13257,7 @@ False
 </div>
 </div>
 
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
@@ -13169,7 +13299,7 @@ False
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
@@ -13207,7 +13337,7 @@ False
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[25]:</div>
@@ -13245,7 +13375,7 @@ False
 </div>
 </div>
 
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
@@ -13283,7 +13413,7 @@ False
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13295,7 +13425,7 @@ False
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[27]:</div>
@@ -13331,7 +13461,7 @@ False
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
@@ -13365,7 +13495,7 @@ False
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[29]:</div>
@@ -13406,7 +13536,7 @@ False
 </div>
 </div>
 
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[30]:</div>
@@ -13441,7 +13571,7 @@ y = 2
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[31]:</div>
@@ -13475,7 +13605,7 @@ y = 1
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13488,7 +13618,7 @@ y = 1
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[32]:</div>
@@ -13524,7 +13654,7 @@ y = 1
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[33]:</div>
@@ -13559,7 +13689,7 @@ y = 1
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[34]:</div>
@@ -13596,7 +13726,7 @@ False
 </div>
 </div>
 
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[35]:</div>
@@ -13632,7 +13762,7 @@ None
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[36]:</div>
@@ -13667,7 +13797,7 @@ None
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[37]:</div>
@@ -13686,7 +13816,7 @@ None
 </div>
 </div>
 
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[38]:</div>
@@ -13721,7 +13851,7 @@ dict_items([(&#39;user&#39;, &#39;joelgrus&#39;), (&#39;text&#39;, &#39;Data Sci
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[39]:</div>
@@ -13756,7 +13886,7 @@ True
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13769,7 +13899,7 @@ True
 
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13777,7 +13907,7 @@ True
 <h4 id="Let's-load-some-data-to-use-in-the-upcoming-examples-on-defaultdict">Let's load some data to use in the upcoming examples on <code>defaultdict</code><a class="anchor-link" href="#Let's-load-some-data-to-use-in-the-upcoming-examples-on-defaultdict">&#182;</a></h4>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[40]:</div>
@@ -13818,7 +13948,7 @@ type(tweets[0]): &lt;class &#39;dict&#39;&gt;
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13829,7 +13959,7 @@ type(tweets[0]): &lt;class &#39;dict&#39;&gt;
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[41]:</div>
@@ -13860,7 +13990,7 @@ type(tweets[0]): &lt;class &#39;dict&#39;&gt;
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[42]:</div>
@@ -13893,7 +14023,7 @@ type(tweets[0]): &lt;class &#39;dict&#39;&gt;
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13905,7 +14035,7 @@ type(tweets[0]): &lt;class &#39;dict&#39;&gt;
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[43]:</div>
@@ -13936,7 +14066,7 @@ type(tweets[0]): &lt;class &#39;dict&#39;&gt;
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[44]:</div>
@@ -13967,7 +14097,7 @@ type(tweets[0]): &lt;class &#39;dict&#39;&gt;
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[45]:</div>
@@ -14024,7 +14154,7 @@ timestamp_ms : 	 1439761274657
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14108,7 +14238,7 @@ timestamp_ms : 	 1439761274657
 </div>
 </div>
 
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[48]:</div>
@@ -14127,7 +14257,7 @@ timestamp_ms : 	 1439761274657
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[49]:</div>
@@ -14146,7 +14276,7 @@ timestamp_ms : 	 1439761274657
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[50]:</div>
@@ -14163,7 +14293,7 @@ timestamp_ms : 	 1439761274657
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14172,7 +14302,7 @@ timestamp_ms : 	 1439761274657
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[51]:</div>
@@ -14189,7 +14319,7 @@ timestamp_ms : 	 1439761274657
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[52]:</div>
@@ -14233,7 +14363,7 @@ defaultdict(&lt;class &#39;int&#39;&gt;, {b&#39;RT&#39;: 1, b&#39;@HCeretto:&#39
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14257,7 +14387,7 @@ defaultdict(&lt;class &#39;int&#39;&gt;, {b&#39;RT&#39;: 1, b&#39;@HCeretto:&#39
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14266,7 +14396,7 @@ defaultdict(&lt;class &#39;int&#39;&gt;, {b&#39;RT&#39;: 1, b&#39;@HCeretto:&#39
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[53]:</div>
@@ -14311,7 +14441,7 @@ defaultdict(&lt;function &lt;lambda&gt; at 0x123832158&gt;, {2: [0, 1]})
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14323,7 +14453,7 @@ defaultdict(&lt;function &lt;lambda&gt; at 0x123832158&gt;, {2: [0, 1]})
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[54]:</div>
@@ -14356,7 +14486,7 @@ defaultdict(&lt;function &lt;lambda&gt; at 0x123832158&gt;, {2: [0, 1]})
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[55]:</div>
@@ -14400,7 +14530,7 @@ in 735
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[56]:</div>
@@ -14443,7 +14573,7 @@ b&#39;@HCeretto:&#39; 1
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14459,7 +14589,7 @@ b&#39;@HCeretto:&#39; 1
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[57]:</div>
@@ -14504,7 +14634,7 @@ False
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[58]:</div>
@@ -14542,7 +14672,7 @@ False
 </div>
 </div>
 
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[59]:</div>
@@ -14592,7 +14722,7 @@ Wall time: 6.91 µs
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[60]:</div>
@@ -14630,7 +14760,7 @@ Wall time: 6.91 µs
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14638,7 +14768,7 @@ Wall time: 6.91 µs
 <h3 id="Control-Flow">Control Flow<a class="anchor-link" href="#Control-Flow">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14646,7 +14776,7 @@ Wall time: 6.91 µs
 <h4 id="Conditional-looping:-if-else-statements">Conditional looping: if-else statements<a class="anchor-link" href="#Conditional-looping:-if-else-statements">&#182;</a></h4>
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[61]:</div>
@@ -14687,7 +14817,7 @@ Wall time: 6.91 µs
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[62]:</div>
@@ -14721,7 +14851,7 @@ Wall time: 6.91 µs
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14732,7 +14862,7 @@ Wall time: 6.91 µs
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[63]:</div>
@@ -14777,7 +14907,7 @@ Good bye!
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14788,7 +14918,7 @@ Good bye!
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[64]:</div>
@@ -14826,7 +14956,7 @@ lion 4
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14834,7 +14964,7 @@ lion 4
 <h4 id="continue-and-break"><code>continue</code> and <code>break</code><a class="anchor-link" href="#continue-and-break">&#182;</a></h4>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[65]:</div>
@@ -14873,7 +15003,7 @@ lion 4
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14881,7 +15011,7 @@ lion 4
 <h3 id="Truthiness">Truthiness<a class="anchor-link" href="#Truthiness">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14893,7 +15023,7 @@ lion 4
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[66]:</div>
@@ -14935,7 +15065,7 @@ x is none? True
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14957,7 +15087,7 @@ x is none? True
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[67]:</div>
@@ -14994,7 +15124,7 @@ x is none? True
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15003,7 +15133,7 @@ x is none? True
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[68]:</div>
@@ -15042,7 +15172,7 @@ False
 </div>
 </div>
 
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15062,7 +15192,7 @@ False
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15070,7 +15200,7 @@ False
 <h3 id="Sorting">Sorting<a class="anchor-link" href="#Sorting">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15085,7 +15215,7 @@ False
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[69]:</div>
@@ -15122,7 +15252,7 @@ False
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[70]:</div>
@@ -15156,7 +15286,7 @@ False
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[71]:</div>
@@ -15189,7 +15319,7 @@ False
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15202,7 +15332,7 @@ False
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[72]:</div>
@@ -15262,7 +15392,7 @@ set of squares of numbers less than 5: {0, 1, 4, 9, 16}
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15270,7 +15400,7 @@ set of squares of numbers less than 5: {0, 1, 4, 9, 16}
 <h3 id="Generators-and-Iterators">Generators and Iterators<a class="anchor-link" href="#Generators-and-Iterators">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[73]:</div>
@@ -15327,7 +15457,7 @@ squares_list: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[74]:</div>
@@ -15345,7 +15475,7 @@ squares_list: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15353,7 +15483,7 @@ squares_list: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 <h3 id="Randomness">Randomness<a class="anchor-link" href="#Randomness">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15369,7 +15499,7 @@ squares_list: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[75]:</div>
@@ -15447,7 +15577,7 @@ four_with_replacement: [2, 9, 5, 6]
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15455,7 +15585,7 @@ four_with_replacement: [2, 9, 5, 6]
 <h3 id="Regular-Expressions">Regular Expressions<a class="anchor-link" href="#Regular-Expressions">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15470,7 +15600,7 @@ four_with_replacement: [2, 9, 5, 6]
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[76]:</div>
@@ -15511,7 +15641,7 @@ replace any numbers with to from here to there
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15519,7 +15649,7 @@ replace any numbers with to from here to there
 <h3 id="Object-Oriented-Programming">Object-Oriented Programming<a class="anchor-link" href="#Object-Oriented-Programming">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15535,7 +15665,7 @@ replace any numbers with to from here to there
 
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[77]:</div>
@@ -15566,7 +15696,7 @@ replace any numbers with to from here to there
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[78]:</div>
@@ -15602,7 +15732,7 @@ set contains 3? False
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15610,7 +15740,7 @@ set contains 3? False
 <h3 id="Functional-Tools">Functional Tools<a class="anchor-link" href="#Functional-Tools">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15625,7 +15755,7 @@ set contains 3? False
 
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[79]:</div>
@@ -15672,7 +15802,7 @@ square of 3: 9
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[80]:</div>
@@ -15712,7 +15842,7 @@ twice_xs created using map method: &lt;map object at 0x122db6438&gt;
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[81]:</div>
@@ -15751,7 +15881,7 @@ x_evens created using filter method: &lt;filter object at 0x122db60b8&gt;
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[82]:</div>
@@ -15788,7 +15918,7 @@ x_evens created using filter method: &lt;filter object at 0x122db60b8&gt;
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15796,7 +15926,7 @@ x_evens created using filter method: &lt;filter object at 0x122db60b8&gt;
 <h3 id="enumerate"><code>enumerate</code><a class="anchor-link" href="#enumerate">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15805,7 +15935,7 @@ x_evens created using filter method: &lt;filter object at 0x122db60b8&gt;
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[83]:</div>
@@ -15849,7 +15979,7 @@ x_evens created using filter method: &lt;filter object at 0x122db60b8&gt;
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15857,7 +15987,7 @@ x_evens created using filter method: &lt;filter object at 0x122db60b8&gt;
 <h3 id="zip-and-Argument-Unpacking"><code>zip</code> and Argument Unpacking<a class="anchor-link" href="#zip-and-Argument-Unpacking">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15866,7 +15996,7 @@ x_evens created using filter method: &lt;filter object at 0x122db60b8&gt;
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[84]:</div>
@@ -15922,7 +16052,7 @@ x_evens created using filter method: &lt;filter object at 0x122db60b8&gt;
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15931,7 +16061,7 @@ x_evens created using filter method: &lt;filter object at 0x122db60b8&gt;
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[85]:</div>
@@ -15975,7 +16105,7 @@ add 1 and 2 by passing unpacked list [1,2] to add() method: 3
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15983,7 +16113,7 @@ add 1 and 2 by passing unpacked list [1,2] to add() method: 3
 <h3 id="args-and-kwargs">args and kwargs<a class="anchor-link" href="#args-and-kwargs">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15993,7 +16123,7 @@ add 1 and 2 by passing unpacked list [1,2] to add() method: 3
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[86]:</div>
@@ -16037,7 +16167,7 @@ add 6 numbers using add_variable() 24
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -16046,7 +16176,7 @@ add 6 numbers using add_variable() 24
 
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -16055,7 +16185,7 @@ add 6 numbers using add_variable() 24
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[87]:</div>
@@ -16092,7 +16222,7 @@ add 6 numbers using add_variable() 24
 </div>
 </div>
 
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -16109,16 +16239,78 @@ add 6 numbers using add_variable() 24
 </ul>
 </li>
 </ul>
-<p>Note: Get the code and examples from the book "Data Science From Scratch" for Chapters 3 - 24 <a href="https://github.com/joelgrus/data-science-from-scratch">here</a></p>
+<p>Note: Get the code and examples from the book for Chapters 3 - 24 <a href="https://github.com/joelgrus/data-science-from-scratch">here</a></p>
 
 </div>
 </div>
+</div></section></section>
 </div>
-    </div>
-  </div>
+</div>
+
+<script>
+
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "reveal.js/lib/js/head.min.js",
+      "reveal.js/js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+
+            transition: "slide",
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "reveal.js/lib/js/classList.js",
+                  condition: function() { return !document.body.classList; } },
+                { src: "reveal.js/plugin/notes/notes.js",
+                  async: true,
+                  condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        function setScrollingSlide() {
+            var scroll = false
+            if (scroll === true) {
+              var h = $('.reveal').height() * 0.95;
+              $('section.present').find('section')
+                .filter(function() {
+                  return $(this).height() > h;
+                })
+                .css('height', 'calc(95vh)')
+                .css('overflow-y', 'scroll')
+                .css('margin-top', '20px');
+            }
+        }
+
+        // check and set the scrolling slide every time the slide change
+        Reveal.addEventListener('slidechanged', setScrollingSlide);
+
+    }
+
+);
+</script>
+
 </body>
-
- 
 
 
 </html>
